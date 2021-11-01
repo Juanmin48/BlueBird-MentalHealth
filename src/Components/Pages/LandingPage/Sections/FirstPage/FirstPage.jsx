@@ -1,9 +1,9 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './FirstPage.css'
 import { Container } from "react-bootstrap";
-import mentalHealth from '../../../../assets/Mental health.gif';
-import firstMainThings from '../../../../assets/FirstMainThings.svg';
-import secondMainThings from '../../../../assets/SecondMainThings.svg';
+import mentalHealth from '../../../../../assets/Mental health.gif';
+import firstMainThings from '../../../../../assets/FirstMainThings.svg';
+import secondMainThings from '../../../../../assets/SecondMainThings.svg';
 
 const FirstPage = () => {
   return (

@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from 'react'
-import LandingPage from "./Components/LandingPage/LandingPage";
-import Statistics from "./Components/Statistics/Statistics";
+import LandingPage from "./Components/Pages/LandingPage/LandingPage";
+import Statistics from "./Components/Pages/Statistics/Statistics";
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 function App() {

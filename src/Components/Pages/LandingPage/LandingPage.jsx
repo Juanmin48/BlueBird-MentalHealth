@@ -1,12 +1,12 @@
 import './LandingPageStyle.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Menu from '../Menu/Menu';
-import FirstPage from './Pages/FirstPage/FirstPage';
-import SecondPage from './Pages/SecondPage/SecondPage'
-import ThirdPage from './Pages/ThirdPage/ThirdPage';
-import FourthPage from './Pages/FourthPage/FourthPage';
-import Footer from '../Footer/Footer';
-import lineHistory from '../../assets/lineHistory.svg';
+import Menu from '../../Menu/Menu';
+import FirstPage from './Sections/FirstPage/FirstPage';
+import SecondPage from './Sections/SecondPage/SecondPage'
+import ThirdPage from './Sections/ThirdPage/ThirdPage';
+import FourthPage from './Sections/FourthPage/FourthPage';
+import Footer from '../../Footer/Footer';
+import lineHistory from '../../../assets/lineHistory.svg';
 import { Container } from 'react-bootstrap';
 
 

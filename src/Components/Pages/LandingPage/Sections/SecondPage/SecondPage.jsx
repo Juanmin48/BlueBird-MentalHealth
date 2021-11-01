@@ -1,6 +1,6 @@
 import './SecondPage.css'
 import { Container } from "react-bootstrap";
-import Researching from '../../../../assets/Researching.gif'
+import Researching from '../../../../../assets/Researching.gif'
 
 const SecondPage = () => {
   return (

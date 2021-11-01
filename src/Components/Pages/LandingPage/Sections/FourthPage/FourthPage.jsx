@@ -1,9 +1,9 @@
 import { Container, Button } from "react-bootstrap";
 import './FourthPage.css'
-import containerTwo from '../../../../assets/containerTwo.svg';
-import processingThoughts from '../../../../assets/Processing thoughts.gif';
+import containerTwo from '../../../../../assets/containerTwo.svg';
+import processingThoughts from '../../../../../assets/Processing thoughts.gif';
 import { useHistory } from "react-router-dom";
-import Statistics from "../../../Statistics/Statistics";
+import Statistics from "../../../../Pages/Statistics/Statistics";
 
 const FourthPage = () => {
   const history = useHistory();
