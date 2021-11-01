@@ -1,0 +1,16 @@
+#thirdContainer{
+  height: 100vh;
+  width: 100%;
+  max-width: 1550px;
+}
+.title3{
+  font-weight: bold;
+  font-size: 48px;
+}
+@media (max-width: 1370px) {
+  .title3{
+    font-weight: bold;
+    font-size: 40px;
+    margin-left: 80px;
+  }
+}

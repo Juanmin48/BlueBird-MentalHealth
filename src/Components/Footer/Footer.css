@@ -1,0 +1,8 @@
+.foot{
+  height: 30vh;
+}
+@media (max-width: 1370px) {
+  .foot {
+    height: 50vh !important;
+  }
+}

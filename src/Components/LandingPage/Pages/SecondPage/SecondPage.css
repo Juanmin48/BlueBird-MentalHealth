@@ -1,0 +1,44 @@
+#secondContainer{
+  height: 100vh;
+  width: 100%;
+  max-width: 1550px;
+}
+.secondPageContainer{
+  margin-top: 130px;
+}
+.title2{
+  font-weight: bold; 
+  font-size: 48px;
+}
+.paragraph2{
+  width: 70%;
+  text-align: right;
+  font-size: 30px;
+  color: #5C5B5B;
+}
+.researching{
+  height: 800px;
+}
+@media (max-width: 1370px) {
+  .secondPageContainer{
+    align-items: flex-end;
+    margin-top: 4.8rem;
+    width: 50rem;
+  }
+  .title2{
+    font-weight: bold; 
+    font-size: 2.5rem;
+    margin-right: 300px;
+  }
+  .researching{
+    height: 32rem;
+    margin-right: 60px;
+  }
+  .paragraph2{
+    width: 90%;
+    text-align: right;
+    font-size: 1.5rem;
+    color: #5C5B5B;
+    margin-bottom: 430px;
+  }
+}

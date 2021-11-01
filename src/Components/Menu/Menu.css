@@ -1,0 +1,14 @@
+.primary {
+  background-color: #4CB1DF !important;
+}
+.textColorPrimary{
+  color: #FFFFFF !important;
+}
+.fotter{
+  margin-left: 180px;
+}
+@media (max-width: 1370px) {
+  .fotter{
+    margin-left: 80px;
+  }
+}

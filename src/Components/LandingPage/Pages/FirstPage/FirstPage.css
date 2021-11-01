@@ -1,0 +1,41 @@
+#firstContainer{
+  height: 100vh;
+  width: 100%;
+  max-width: 1550px;
+  margin-top: 0px !important;
+}
+#mentalHealth{
+  height: 800px;
+}
+.firstPageContainer{
+  width: 40%; 
+  margin-right: auto; 
+  height: 800px;
+}
+.title{
+  font-weight: bold; 
+  font-size: 48px;
+}
+.paragraph{
+  font-size: 30px;
+  color: #5C5B5B;
+}
+@media (max-width: 1370px) {
+  #mentalHealth{
+    height: 32rem;
+  }
+  .firstPageContainer{
+    width: 40%; 
+    height: 32rem;
+    margin-left: 5rem;
+    justify-content: center !important;
+  }
+  .title{
+    font-weight: bold; 
+    font-size: 2.5rem;
+  }
+  .paragraph{
+    font-size: 1.5rem;
+    color: #5C5B5B;
+  }
+}
