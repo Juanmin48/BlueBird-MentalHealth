@@ -26,7 +26,7 @@ const Footer = () => {
           <Nav.Link className="textColorPrimary" href="#">Try it out</Nav.Link>
         </Nav>
       </div>
-      <Container style={{position: 'absolute', top: '950px', left: '170px'}}>
+      <Container style={{marginTop:'5rem', marginLeft:'10rem'}}>
         <p style={{color: '#FFFFFF'}}>&#169;Derechos reservados.</p>
       </Container>
     </Container>
