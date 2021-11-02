@@ -13,7 +13,7 @@ import { Container } from 'react-bootstrap';
 const LandingPage = () => {
   return (
     <>
-      <Menu></Menu>
+      <Menu hidden={false}/>
       <img id="line" height="1850px" src={lineHistory} alt=""/>
       <FirstPage />
       <SecondPage />

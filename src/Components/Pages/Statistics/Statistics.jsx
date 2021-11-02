@@ -75,7 +75,7 @@ const Statistics = () => {
 
   return (
     <>
-      <Menu/>
+      <Menu hidden={true}/>
       <div className="" style={{height: '92vh', width: '100%', marginTop: '56px', background: '#F6F8FB'}}>
         <div className="row m-0 p-0" style={{width: '100%'}}>
           <div className="p-0" style={{height: '92vh', width: '21%'}}>
