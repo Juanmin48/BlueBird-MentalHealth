@@ -1,5 +1,6 @@
 import React from 'react';
 import Icon from "awesome-react-icons";
+import {Link} from 'react-router-dom';
 import { ProSidebar, SidebarHeader, SidebarContent, Menu, MenuItem} from 'react-pro-sidebar';
 // import 'react-pro-sidebar/dist/css/styles.css';
 import './Sidebar.scss';
@@ -23,14 +24,18 @@ const Sidebar = () => {
                     <p>Dashboard</p>
                 </div>
                 <Menu>
-                    <MenuItem icon={<Icon name="check-circle" />}>Personal analysis</MenuItem>
+                    <MenuItem icon={<Icon name="check-circle" />}>
+                        General Statistics
+                        <Link to="/statistics" />
+                    </MenuItem>
                 </Menu>
             </SidebarHeader>
             <SidebarContent>
                 <Menu>
-                    <MenuItem icon={<Icon name="activity" />}>Option 1</MenuItem>
-                    <MenuItem icon={<Icon name="activity" />}>Option 2</MenuItem>
-                    <MenuItem icon={<Icon name="activity" />}>Option 3</MenuItem>
+                    <MenuItem icon={<Icon name="activity" />}>All</MenuItem>
+                    <MenuItem icon={<Icon name="activity" />}>Anxiety</MenuItem>
+                    <MenuItem icon={<Icon name="activity" />}>Depression</MenuItem>
+                    <MenuItem icon={<Icon name="activity" />}>Stress</MenuItem>
                     <div
                     style={{
                         marginTop: '50px',

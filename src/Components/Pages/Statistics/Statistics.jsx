@@ -1,7 +1,7 @@
-import './Statistics.css';
+// import './Statistics.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Menu from '../../Menu/Menu';
-import Sidebar from '../../Sidebar/Sidebar'
+import Sidebar from './Sidebar/Sidebar'
 import Footer from '../../Footer/Footer';
 import SpecificStats from './SpecificStats/SpecificStats';
 import { Column } from '@ant-design/charts';

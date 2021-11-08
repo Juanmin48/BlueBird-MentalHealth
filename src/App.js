@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from 'react'
 import LandingPage from "./Components/Pages/LandingPage/LandingPage";
 import Statistics from "./Components/Pages/Statistics/Statistics";
+import PersonalAnalysis from "./Components/Pages/PersonalAnalysis/PersonalAnalysis";
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={LandingPage}/>
         <Route exact path="/statistics" component={Statistics}/>
+        <Route exact path="/PersonalAnalysis" component={PersonalAnalysis}/>
         {/* <Route exact path="/" component={LandingPage}/>
         <Route exact path="/" component={LandingPage}/>
         <Route exact path="/" component={LandingPage}/> */}
