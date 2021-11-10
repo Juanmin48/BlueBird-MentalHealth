@@ -6,20 +6,20 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 function App() {
 
-  const [data, setData] = useState([{}])
+  // const [data, setData] = useState([{}])
 
   
 
-  useEffect(() => {
-    fetch("/members").then(
-      res => res.json()
-    ).then(
-      data =>{
-        setData(data)
-        console.log(data)
-      }
-    )
-  }, [])
+  // useEffect(() => {
+  //   fetch("/members").then(
+  //     res => res.json()
+  //   ).then(
+  //     data =>{
+  //       setData(data)
+  //       console.log(data)
+  //     }
+  //   )
+  // }, [])
 
   
   return (
