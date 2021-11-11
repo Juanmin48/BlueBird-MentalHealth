@@ -1,12 +1,25 @@
-import React from 'react';
+import {React,useState} from 'react';
 import Icon from "awesome-react-icons";
 import {Link} from 'react-router-dom';
 import { ProSidebar, SidebarHeader, SidebarContent, Menu, MenuItem} from 'react-pro-sidebar';
 // import 'react-pro-sidebar/dist/css/styles.css';
 import './Sidebar.scss';
 
-const Sidebar = () => {
-    
+const Sidebar = ({getChange}) => {
+
+    const setAll = () =>{
+        getChange("All");
+    };
+    const setAnxiety = () =>{
+        getChange("Anxiety");
+    };
+    const setDepression = () =>{
+        getChange("Depression");
+    };
+    const setStress = () =>{
+        getChange("Stress");
+    };
+
     return (
       <>
         <ProSidebar>
@@ -32,10 +45,10 @@ const Sidebar = () => {
             </SidebarHeader>
             <SidebarContent>
                 <Menu>
-                    <MenuItem icon={<Icon name="activity" />}>All</MenuItem>
-                    <MenuItem icon={<Icon name="activity" />}>Anxiety</MenuItem>
-                    <MenuItem icon={<Icon name="activity" />}>Depression</MenuItem>
-                    <MenuItem icon={<Icon name="activity" />}>Stress</MenuItem>
+                    <MenuItem icon={<Icon name="activity" />} onClick={setAll}>All</MenuItem>
+                    <MenuItem icon={<Icon name="activity" />} onClick={setAnxiety}>Anxiety</MenuItem>
+                    <MenuItem icon={<Icon name="activity" />} onClick={setDepression}>Depression</MenuItem>
+                    <MenuItem icon={<Icon name="activity" />} onClick={setStress}>Stress</MenuItem>
                     <div
                     style={{
                         marginTop: '50px',

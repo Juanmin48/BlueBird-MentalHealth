@@ -10,9 +10,9 @@ const AnalysisDetails = (props) => {
 
     return (
       <>
-        <div className="d-flex flex-column align-items-center pt-4 rounded" style={{height: '28vh', width: '30%', background: '#EAEAEA'}}>
-            <p className="m-0" style={{fontSize:'16px', fontWeight:'bold'}}>{data.title}</p>
-            <p className="m-0" style={{fontSize:'30px', fontWeight:'bold', color: '#4CB1DF'}}>{data.percentage}%</p>
+        <div className="d-flex flex-column align-items-center" style={{height: '28vh', width: '100%'}}>
+            <p className="m-0 pt-1" style={{fontSize:'16px', fontWeight:'bold'}}>{data.title}</p>
+            <p className="m-0" style={{fontSize:'30px', fontWeight:'bold', color: '#4CB1DF'}}>{data.percentage}</p>
             <p className="ps-3 pe-3" style={{textAlign:'center'}}>{data.description}</p>
         </div>
       </>
