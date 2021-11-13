@@ -19,7 +19,7 @@ const FirstPage = () => {
           </p>
           <img className="ms-auto" width="100px" src={secondMainThings} alt=""/>
         </div>
-        <div class="d-flex align-items-center" style={{height: '100vh'}} >
+        <div className="d-flex align-items-center" style={{height: '100vh'}} >
           <img id="mentalHealth" src={mentalHealth} alt=""/>
         </div>
       </Container>

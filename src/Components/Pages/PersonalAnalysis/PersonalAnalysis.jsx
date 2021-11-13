@@ -1,5 +1,5 @@
 // import './PersonalAnalysis.css';
-import {React,useState,useEffect} from 'react';
+import {React, Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Menu from '../../Menu/Menu';
 import Sidebar from './Sidebar/Sidebar'
@@ -11,137 +11,104 @@ import Loader from "react-loader-spinner";
 import Carousel from 'nuka-carousel';
 
 
-const PersonalAnalysis = () => {
-  const api = axios.create({
-    baseURL: "http://ce3b-35-230-60-96.ngrok.io" 
-  });
-  const [loading, setLoading] = useState(false);
-  const [percentages, setPercentages] = useState(null);
-  const [cant, setCant] = useState(null);
-  const [tanxiety, setTanxienty] = useState(null);
-  const [tdepression, setTdepression] = useState(null);
-  const [tstress, setTstress] = useState(null);
-  const [data, setData] = useState(null);
-  const user = {
-    username : "IbaiLlanos"
+class PersonalAnalysis extends Component {
+  state = {
+    loading: true,
+    percentages: null,
+    cant: null,
+    tanxiety: null,
+    tdepression: null,
+    tstress: null,
+    dataall:null,
+    dataa: null,
+    datad: null,
+    datas: null,
+    config: null
   }
-  useEffect(() => {
-    async function getTweets() {
-      const response = await api.post("/get_analysis", {username : "IbaiLlanos"});
-      setPercentages(response.data.percentages);
-      setCant(response.data.total_tweets);
-      setTanxienty(response.data.tweets_2);
-      setTdepression(response.data.tweets_1);
-      setTstress(response.data.tweets_3);
-      const json = response.data;
-      console.log({json});
-      const dataall = [
-        {
-          Condition: 'Anxiety',
-          Tweets: json.percentages[2].quantity
+  componentDidMount(){
+          axios.post("http://a34c-35-229-206-152.ngrok.io/get_analysis", {username : "filosofiabuena"})
+          .then(response => {
+            this.setState({
+              percentages: response.data.percentages,
+              cant:response.data.total_tweets,
+              tanxiety:response.data.tweets_2,
+              tdepression:response.data.tweets_1,
+              tstress:response.data.tweets_3,
+            })
+            
+            const json = response.data;
+            console.log(response.data);
+            const dataall = [
+              {
+                Condition: 'Anxiety',
+                Tweets: json.percentages[2].quantity
+              },
+              {
+                Condition: 'Depression',
+                Tweets: json.percentages[1].quantity
+              },
+              {
+                Condition: 'Stress',
+                Tweets: json.percentages[3].quantity
+              }
+            ];
+            this.setConfig(dataall);
+          })
+        setTimeout(()=>{
+          this.setState({
+            loading :false
+          })
+          
+        },3000);
+  }
+  setConfig(data) {
+    this.setState({
+              
+      config: {
+        data,
+        xField: 'Condition',
+        yField: 'Tweets',
+        label: {
+          position: 'middle',
+          style: {
+            fill: '#FFFFFF',
+            opacity: 0.6,
+          },
         },
-        {
-          Condition: 'Depression',
-          Tweets: json.percentages[1].quantity
+        columnStyle: {
+          fill: '#4CB1DF',
+          fillOpacity: 1,
+          stroke: 'black',
+          lineWidth: 0,
+          lineDash: [4,5],
+          strokeOpacity: 0.7,
+          shadowColor: 'black',
+          shadowBlur: 0,
+          shadowOffsetX: 0,
+          shadowOffsetY: 0,
+          cursor: 'pointer'
         },
-        {
-          Condition: 'Stress',
-          Tweets: json.percentages[3].quantity
-        }
-      ];
-      setData(dataall);
-    }
-    getTweets();
-    console.log(tanxiety)
-    console.log(tdepression)
-    console.log(tstress)
-    console.log(cant);
-    setLoading(true);
-    setTimeout(()=>{
-      setLoading(false);
-    },2000);
-  }, []);
-  
-  const dataall = [
-    {
-      Condition: 'Anxiety',
-      Tweets: percentages[2].quantity
-    },
-    {
-      Condition: 'Depression',
-      Tweets: percentages[1].quantity
-    },
-    {
-      Condition: 'Stress',
-      Tweets: percentages[3].quantity
-    }
-  ];
-  
-  const dataa = [
-    {
-      Condition: 'Anxiety',
-      Tweets: percentages[2].quantity
-    }
-  ];
-  const datad = [
-    {
-      Condition: 'Depression',
-      Tweets: percentages[1].quantity
-    }
-  ];
-  const datas = [
-    {
-      Condition: 'Stress',
-      Tweets: percentages[3].quantity
-    }
-  ];
-  
-  
-  const config = {
-    data,
-    xField: 'Condition',
-    yField: 'Tweets',
-    label: {
-      position: 'middle',
-      style: {
-        fill: '#FFFFFF',
-        opacity: 0.6,
-      },
-    },
-    columnStyle: {
-      fill: '#4CB1DF',
-      fillOpacity: 1,
-      stroke: 'black',
-      lineWidth: 0,
-      lineDash: [4,5],
-      strokeOpacity: 0.7,
-      shadowColor: 'black',
-      shadowBlur: 0,
-      shadowOffsetX: 0,
-      shadowOffsetY: 0,
-      cursor: 'pointer'
-    },
-    meta: {
-      type: { alias: 'Condition' },
-      tweets: { alias: 'Tweets' },
-    },
-  };
-  if(loading){
+        meta: {
+          type: { alias: 'Condition' },
+          tweets: { alias: 'Tweets' },
+        },
+      }
+    })
+  }
+  render(){
     return(
-      <>
-      <Menu hidden={true}/>
-        <Loader className="col d-flex justify-content-around"
-          style={{marginTop:'240px'}}
-          type="Puff"
-          color="#4CB1DF"
-          height={150}
-          width={150}
-          timeout={5000} //2 secs
-        />
-      </>
-    );
-  }else{
-      return (
+      this.state.loading
+      ? <>
+          <Menu hidden={true}/>
+            <Loader className="col d-flex justify-content-around"
+              style={{marginTop:'240px'}}
+              type="Puff"
+              color="#4CB1DF"
+              height={150}
+              width={150} //2 secs
+            />
+        </> 
+        :
         <>
           <Menu hidden={true}/>
           <div className="" style={{height: '92vh', width: '100%', marginTop: '45px', background: '#F6F8FB'}}>
@@ -149,23 +116,48 @@ const PersonalAnalysis = () => {
               <div className="p-0" style={{height: '92vh', width: '21%'}}>
               <Sidebar
                 getChange={(option)=>{
-                  switch (option) {
-                    case "All":
-                      setData(dataall);
-                      break;
-                    case "Anxiety":
-                      setData(dataa);
-                      break;
-                    case "Depression":
-                      setData(datad);
-                      break;
-                    case "Stress":
-                      setData(datas);
-                      break;
-                    default:
-                      break;
+                  var data = [
+                    {
+                      Condition: 'Anxiety',
+                      Tweets: this.state.percentages[2].quantity
+                    },
+                    {
+                      Condition: 'Depression',
+                      Tweets: this.state.percentages[1].quantity
+                    },
+                    {
+                      Condition: 'Stress',
+                      Tweets: this.state.percentages[3].quantity
+                    }
+                  ];
+                  if (option[0].status) {
+                    data.push({
+                        Condition: 'Anxiety',
+                        Tweets: this.state.percentages[2].quantity
+                      }
+                    )
+                  }else{
+                    data = data.filter(item => item.Condition !== "Anxiety")
                   }
-                  
+                  if (option[1].status) {
+                    data.push({
+                        Condition: 'Depression',
+                        Tweets: this.state.percentages[1].quantity
+                      }
+                    )
+                  }else{
+                    data = data.filter(item => item.Condition !== "Depression")
+                  }
+                  if (option[2].status) {
+                    data.push({
+                        Condition: 'Stress',
+                        Tweets: this.state.percentages[3].quantity
+                      }
+                    )
+                  }else{
+                    data = data.filter(item => item.Condition !== "Stress")
+                  }
+                  this.setConfig(data);
                 }}
               />
               </div>
@@ -174,29 +166,29 @@ const PersonalAnalysis = () => {
                   <div className="d-flex flex-column align-items-center pt-2 rounded" style={{height: '28vh', width: '30%', background: '#EAEAEA'}}>
                     <Carousel renderCenterLeftControls={({ previousSlide }) => (null)}
                       renderCenterRightControls={({ nextSlide }) => (null)}>
-                      <AnalysisDetails title={"Anxiety"} percentage={percentages[2].percentage+"%"} description={percentages[2].percentage+"% of your tweets reveal anxiety trends"}/>
-                      { tanxiety.map(t => <AnalysisDetails title={"Anxiety example"} percentage={""} description={t.tweet}/>)}
+                      <AnalysisDetails title={"Anxiety"} percentage={this.state.percentages[2].percentage+"%"} description={this.state.percentages[2].percentage+"% of your tweets reveal anxiety trends"}/>
+                      { this.state.tanxiety.map(t => <AnalysisDetails title={"Anxiety example"} percentage={""} description={t.tweet}/>)}
                     </Carousel>
                   </div>
                   <div className="d-flex flex-column align-items-center pt-2 rounded" style={{height: '28vh', width: '30%', background: '#EAEAEA'}}>
                     <Carousel renderCenterLeftControls={({ previousSlide }) => (null)}
                       renderCenterRightControls={({ nextSlide }) => (null)}>
-                      <AnalysisDetails title={"Depression"} percentage={percentages[1].percentage+"%"} description={percentages[1].percentage+"% of your tweets reveal anxiety trends"}/>
-                      { tdepression.map(t => <AnalysisDetails title={"Depression example"} percentage={""} description={t.tweet}/>)}
+                      <AnalysisDetails title={"Depression"} percentage={this.state.percentages[1].percentage+"%"} description={this.state.percentages[1].percentage+"% of your tweets reveal anxiety trends"}/>
+                      { this.state.tdepression.map(t => <AnalysisDetails title={"Depression example"} percentage={""} description={t.tweet}/>)}
                     </Carousel>
                   </div>
                   <div className="d-flex flex-column align-items-center pt-2 rounded" style={{height: '28vh', width: '30%', background: '#EAEAEA'}}>
                     <Carousel renderCenterLeftControls={({ previousSlide }) => (null)}
                       renderCenterRightControls={({ nextSlide }) => (null)}>
-                      <AnalysisDetails title={"Stress"} percentage={percentages[3].percentage+"%"} description={percentages[3].percentage+"% of your tweets reveal anxiety trends"}/>
-                      { tstress.map(t => <AnalysisDetails title={"Stress example"} percentage={""} description={t.tweet}/>)}
+                      <AnalysisDetails title={"Stress"} percentage={this.state.percentages[3].percentage+"%"} description={this.state.percentages[3].percentage+"% of your tweets reveal anxiety trends"}/>
+                      { this.state.tstress.map(t => <AnalysisDetails title={"Stress example"} percentage={""} description={t.tweet}/>)}
                     </Carousel>
                   </div>
                 </div>
                 <div className="row m-0 p-0" style={{height: '57vh', width: '100%'}}>
                   <div className="ps-4 pe-4 " style={{height: '56vh', width: '67%'}}>
                   <Column
-                      {...config}
+                      {...this.state.config}
                       onReady={(plot) => {
                         plot.on('plot:click', (evt) => {
                           const { x, y } = evt;
@@ -220,9 +212,7 @@ const PersonalAnalysis = () => {
             </div>
           </div>
           {/* <Footer /> */}
-        </>
-      );
+        </>        
+      )
   }
-};
-
-export default PersonalAnalysis;
+} export default PersonalAnalysis;
