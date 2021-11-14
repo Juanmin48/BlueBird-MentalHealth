@@ -1,3 +1,4 @@
+
 $sidebar-bg-color: #ffff !default;
 $sidebar-color: rgb(0, 0, 0) !default;
 $sidebar-width: 270px !default;
@@ -12,5 +13,6 @@ $breakpoint-sm: 576px !default;
 $breakpoint-md: 768px !default;
 $breakpoint-lg: 992px !default;
 $breakpoint-xl: 1200px !default;
+
 
 @import '~react-pro-sidebar/dist/scss/styles.scss';

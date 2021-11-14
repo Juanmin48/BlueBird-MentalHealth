@@ -5,25 +5,25 @@ import containerTwo from '../../../../../assets/containerTwo.svg';
 import processingThoughts from '../../../../../assets/Processing thoughts.gif';
 import { withRouter } from 'react-router-dom';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
+import firebase from 'firebase';
+import 'firebase/auth';
 
 import Statistics from "../../../../Pages/Statistics/Statistics";
 
-// if (!firebase.apps.length) {
+ if (!firebase.apps.length) {
   firebase.initializeApp({
     apiKey:"AIzaSyB4xAsNRd-Y8o8_RA8NlbuSogl8FkxCNEo",
     authDomain:"bluebird-pf.firebaseapp.com"
   });
-// }else {
-//   firebase.app(); // if already initialized, use that one
-// }
+}else {
+  firebase.app(); // if already initialized, use that one
+}
 
 
 class FourthPage extends Component {
   state = {
     show: false,
-    isSignedIn: false,
+    isSignedIn: true,
     uiConfig: {
       signInFlow: 'popup',
       signInOptions:[

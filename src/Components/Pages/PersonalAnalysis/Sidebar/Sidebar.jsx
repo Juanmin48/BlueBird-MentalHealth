@@ -101,27 +101,23 @@ const Sidebar = ({getChange}) => {
             <SidebarContent>
                 <Menu>
                     <MenuItem >
-                        <label>
-                            <input type="checkbox" checked={checkeda} onClick={handleChangeA}/>
-                            Anxiety
-                        </label>
+                        <div className="form-check form-switch ps-5">
+                            <input className="form-check-input" id="chka" type="checkbox" checked={checkeda} onChange={handleChangeA}/>
+                            <label className="form-check-label" htmlFor="chka">Anxiety</label>
+                        </div>
                     </MenuItem>
                     <MenuItem >
-                        <label>
-                            <input type="checkbox" checked={checkedd} onClick={handleChangeD}/>
-                            Depression
-                        </label>
+                        <div className="form-check form-switch ps-5">
+                            <input className="form-check-input" id="chkd" type="checkbox" checked={checkedd} onChange={handleChangeD}/>
+                            <label className="form-check-label" htmlFor="chkd">Depression</label>
+                        </div>
                     </MenuItem>
                     <MenuItem >
-                        <label>
-                            <input type="checkbox" checked={checkeds} onClick={handleChangeS}/>
-                            Stress
-                        </label>
+                        <div className="form-check form-switch ps-5">
+                            <input className="form-check-input" id="chks" type="checkbox" checked={checkeds} onChange={handleChangeS}/>
+                            <label className="form-check-label" htmlFor="chks">Stress</label>
+                        </div>
                     </MenuItem>
-                    {/* <MenuItem icon={<Icon name="activity" />} onClick={setAll}>All</MenuItem>
-                    <MenuItem icon={<Icon name="activity" />} onClick={setAnxiety}>Anxiety</MenuItem>
-                    <MenuItem icon={<Icon name="activity" />} onClick={setDepression}>Depression</MenuItem>
-                    <MenuItem icon={<Icon name="activity" />} onClick={setStress}>Stress</MenuItem> */}
                     <div
                     style={{
                         marginTop: '50px',
@@ -132,10 +128,10 @@ const Sidebar = ({getChange}) => {
                         color: '#4CB1DF',
                         }}
                     >
-                    <p>Twitter Account</p>
-                    <div></div>   
-                    <h6 style={{color: 'black'}}>@User</h6>
-                </div>
+                        <p>Twitter Account</p>
+                        <div></div>   
+                        <h6 style={{color: 'black'}}>@User</h6>
+                    </div>
                 </Menu>
             </SidebarContent>
         </ProSidebar>

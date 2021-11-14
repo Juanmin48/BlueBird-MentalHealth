@@ -26,7 +26,7 @@ class PersonalAnalysis extends Component {
     config: null
   }
   componentDidMount(){
-          axios.post("http://a34c-35-229-206-152.ngrok.io/get_analysis", {username : "filosofiabuena"})
+          axios.post("http://bba9-35-245-240-12.ngrok.io/get_analysis", {username : "filosofiabuena"})
           .then(response => {
             this.setState({
               percentages: response.data.percentages,
