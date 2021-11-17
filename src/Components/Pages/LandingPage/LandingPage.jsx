@@ -7,7 +7,6 @@ import ThirdPage from './Sections/ThirdPage/ThirdPage';
 import FourthPage from './Sections/FourthPage/FourthPage';
 import Footer from '../../Footer/Footer';
 import lineHistory from '../../../assets/lineHistory.svg';
-import { Container } from 'react-bootstrap';
 
 
 const LandingPage = () => {

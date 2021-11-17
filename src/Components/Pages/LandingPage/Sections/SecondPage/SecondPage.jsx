@@ -11,12 +11,13 @@ const SecondPage = () => {
       </div>
       <div className="d-flex justify-content-center align-items-center" style={{width: '800px', height: '800px', marginTop: '11.7rem'}}>
         <h3 className="paragraph2">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-          when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-          It has survived not only five centuries, but also the leap into electronic typesetting, 
-          remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
-          and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+        This application is an automated system that does not require much effort from the user.
+        First, a neural network (RNN) was developed, which was trained with a variety of tweets 
+        taking into account certain keywords provided by a professional with knowledge in the area 
+        of mental health, which will then be analysed using the tweets posted by the user in session,
+        the results of which are clearly displayed and are private. In addition to this, there is an 
+        analysis in a Colombian environment to know the general status of users in this country taking 
+        into account the pandemic situation of COVID-19.
         </h3>
       </div>
     </Container>

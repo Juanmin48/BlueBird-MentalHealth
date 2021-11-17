@@ -3,13 +3,12 @@ import {React, Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Menu from '../../Menu/Menu';
 import Sidebar from './Sidebar/Sidebar'
-import Footer from '../../Footer/Footer';
 import AnalysisDetails from './AnalysisDetails/AnalysisDetails';
 import { Column } from '@ant-design/charts';
 import axios from 'axios';
 import Loader from "react-loader-spinner";
 import Carousel from 'nuka-carousel';
-
+import { withRouter } from 'react-router-dom';
 
 class PersonalAnalysis extends Component {
   state = {
@@ -23,10 +22,12 @@ class PersonalAnalysis extends Component {
     dataa: null,
     datad: null,
     datas: null,
-    config: null
+    config: null,
+    user: JSON.parse(localStorage.getItem('user'))
   }
   componentDidMount(){
-          axios.post("http://bba9-35-245-240-12.ngrok.io/get_analysis", {username : "filosofiabuena"})
+          console.log(this.state.user)
+          axios.post("http://8b71-34-125-121-17.ngrok.io/get_analysis", {username : this.state.user.providerData[0].uid})
           .then(response => {
             this.setState({
               percentages: response.data.percentages,
@@ -35,7 +36,7 @@ class PersonalAnalysis extends Component {
               tdepression:response.data.tweets_1,
               tstress:response.data.tweets_3,
             })
-            
+            console.log(this.state.user)
             const json = response.data;
             console.log(response.data);
             const dataall = [
@@ -94,6 +95,10 @@ class PersonalAnalysis extends Component {
         },
       }
     })
+  }
+  logout(path){
+    localStorage.setItem('logout', true)
+    this.props.history.push(path);
   }
   render(){
     return(
@@ -157,6 +162,9 @@ class PersonalAnalysis extends Component {
                   }else{
                     data = data.filter(item => item.Condition !== "Stress")
                   }
+                  if(option[3].status){
+                    this.logout("/");
+                  }
                   this.setConfig(data);
                 }}
               />
@@ -192,7 +200,6 @@ class PersonalAnalysis extends Component {
                       onReady={(plot) => {
                         plot.on('plot:click', (evt) => {
                           const { x, y } = evt;
-                          const { xField } = plot.options;
                           const {data} = plot.chart.getTooltipItems({ x, y })[0];
                           console.log(data);
                         });
@@ -201,10 +208,17 @@ class PersonalAnalysis extends Component {
                   </div>
                   <div className="ps-3 pe-4 d-flex flex-column justify-content-around align-items-center" style={{height: '56vh', width: '33%'}}>
                       <div className="d-flex align-items-center rounded-circle" style={{height:'12vh', width: '26%', fontSize:'25px', color: '#4CB1DF',background: '#EAEAEA'}}>
-                        <p className="mx-auto pt-4">21%</p>
+                        <p className="mx-auto pt-4">70%</p>
                       </div>
                       <div style={{textAlign:'center', fontSize:'13px'}}>
-                          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+                          <p>
+                            The present analysis has an accuracy of 70% so it is not totally reliable
+                            and it is recommended to look for a specialized diagnosis provided by a 
+                            professional specialist in mental health and mental affections. <br/><br/> 
+                            The above-mentioned accuracy was calculated based on a series of tests 
+                            implemented by the developers using different test sets extracted with 
+                            the same criteria as the general analysis previously presented.
+                          </p>
                       </div>
                   </div>
                 </div>
@@ -215,4 +229,4 @@ class PersonalAnalysis extends Component {
         </>        
       )
   }
-} export default PersonalAnalysis;
+} export default withRouter(PersonalAnalysis);

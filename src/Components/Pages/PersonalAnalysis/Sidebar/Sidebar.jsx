@@ -6,60 +6,94 @@ import { ProSidebar, SidebarHeader, SidebarContent, Menu, MenuItem} from 'react-
 import './Sidebar.scss';
 
 const Sidebar = ({getChange}) => {
-
+    const [user] = useState(JSON.parse(localStorage.getItem('user')));
     const [checkeda, setCheckeda] = useState(true);
     const [checkedd, setCheckedd] = useState(true);
     const [checkeds, setCheckeds] = useState(true);
+    const [logout, setLogout] = useState(false);
 
     const handleChangeA = () => {
         setCheckeda(!checkeda);
         getChange([
             {
-            "condition": "Anxiety",
+            "option": "Anxiety",
             "status":!checkeda
             },
             {
-            "condition": "Depression",
+            "option": "Depression",
             "status":checkedd
             },
             {
-            "condition": "Stress",
+            "option": "Stress",
             "status":checkeds
             },
+            {
+            "option": "logout",
+            "status":logout
+            }
         ])
       };
     const handleChangeD = () => {
         setCheckedd(!checkedd);
         getChange([
             {
-            "condition": "Anxiety",
+            "option": "Anxiety",
             "status":checkeda
             },
             {
-            "condition": "Depression",
+            "option": "Depression",
             "status":!checkedd
             },
             {
-            "condition": "Stress",
+            "option": "Stress",
             "status":checkeds
             },
+            {
+            "option": "logout",
+            "status":logout
+            }
         ])
       };
     const handleChangeS = () => {
         setCheckeds(!checkeds);
         getChange([
             {
-            "condition": "Anxiety",
+            "option": "Anxiety",
             "status":checkeda
             },
             {
-            "condition": "Depression",
+            "option": "Depression",
             "status":checkedd
             },
             {
-            "condition": "Stress",
+            "option": "Stress",
             "status":!checkeds
             },
+            {
+            "option": "logout",
+            "status":logout
+            }
+        ])
+      };
+      const handleLogOut = () => {
+        setLogout(!logout);
+        getChange([
+            {
+            "option": "Anxiety",
+            "status":checkeda
+            },
+            {
+            "option": "Depression",
+            "status":checkedd
+            },
+            {
+            "option": "Stress",
+            "status":checkeds
+            },
+            {
+            "option": "logout",
+            "status":!logout
+            }
         ])
       };
     // const setAll = () =>{
@@ -128,9 +162,14 @@ const Sidebar = ({getChange}) => {
                         color: '#4CB1DF',
                         }}
                     >
-                        <p>Twitter Account</p>
-                        <div></div>   
-                        <h6 style={{color: 'black'}}>@User</h6>
+                        <div className="row d-flex justify-content-center">
+                            <p style={{width:"60%"}}>Twitter Account</p>
+                            <button type="button" class="btn btn-link shadow-none" style={{width:"10%", marginTop:"-15px"}} onClick={handleLogOut}><Icon name="log-out"/></button>
+                        </div>
+                        <div>
+                            <img src={user.photoURL} alt="ProfilePicture" />
+                        </div>
+                        <h6 className="pt-2" style={{color: 'black'}}>{user.displayName}</h6>
                     </div>
                 </Menu>
             </SidebarContent>

@@ -7,15 +7,15 @@ const ThirdPage = () => {
       <div style={{paddingTop: '88px'}}>
         <h1 className="title3">Training</h1>
         <div  className="d-flex flex-row other" style={{marginTop: '100px'}}>
-          <div className="d-flex flex-column justify-content-center align-items-center col-5 me-5 ms-5">
+          <div className="d-flex flex-column justify-content-center align-items-center col-6">
             <h2 className="text-center col-6" style={{fontWeight: 'bold', fontSize: '40px'}}>Tweets</h2>
-            <h2 className="text-center col-6" style={{fontWeight: 'bold', fontSize: '40px'}}>+100</h2>
-            <p className="col-6 text-center" style={{fontSize: '28px', color: '#5C5B5B'}}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+            <h2 className="text-center col-6" style={{fontWeight: 'bold', fontSize: '40px'}}>+2000</h2>
+            <p className="col-6 text-center" style={{fontSize: '28px', color: '#5C5B5B'}}>Taken from the official Twitter app limited to a Colombian environment.</p>
           </div>
-          <div className="d-flex flex-column justify-content-center align-items-center col-5">
-            <h2 className="text-center col-6" style={{fontWeight: 'bold', fontSize: '40px'}}>Percentage</h2>
-            <h2 className="text-center col-6" style={{fontWeight: 'bold', fontSize: '40px'}}>79%</h2>
-            <p className="col-6 text-center" style={{fontSize: '28px', color: '#5C5B5B'}}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+          <div className="d-flex flex-column justify-content-center align-items-center col-6">
+            <h2 className="text-center col-6" style={{fontWeight: 'bold', fontSize: '40px'}}>Accuracy</h2>
+            <h2 className="text-center col-6" style={{fontWeight: 'bold', fontSize: '40px'}}>70%</h2>
+            <p className="col-6 text-center" style={{fontSize: '28px', color: '#5C5B5B'}}>Based on several tests performed with different sets of test tweets.</p>
           </div>
         </div>
       </div>

@@ -13,9 +13,10 @@ const FirstPage = () => {
           <img width="60px" src={firstMainThings} alt=""/>
           <h1 className="title">BlueBird</h1>
           <p className="paragraph">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-            when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+          Is a web application capable of determining certain negative trends 
+          related to mental health, such as anxiety, depression and stress, of a 
+          person based on a sentiment analysis applied on posts made on 
+          the social network Twitter©.
           </p>
           <img className="ms-auto" width="100px" src={secondMainThings} alt=""/>
         </div>

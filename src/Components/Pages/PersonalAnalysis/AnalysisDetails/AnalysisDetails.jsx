@@ -1,5 +1,4 @@
 import {React,useState,useEffect} from 'react';
-import Icon from "awesome-react-icons";
 
 const AnalysisDetails = (props) => {
     const [data, setData] = useState({title:'',percentage:'',description:''});

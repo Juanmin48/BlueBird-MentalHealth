@@ -3,12 +3,11 @@ import {React, Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Menu from '../../Menu/Menu';
 import Sidebar from './Sidebar/Sidebar'
-import Footer from '../../Footer/Footer';
 import SpecificStats from './SpecificStats/SpecificStats';
 import { Column } from '@ant-design/charts';
 import axios from 'axios';
 import Loader from "react-loader-spinner";
-
+import { withRouter } from 'react-router-dom';
 
 class Statistics extends Component {
   state = {
@@ -24,11 +23,12 @@ class Statistics extends Component {
     cli: null,
     ctg: null,
     stm: null,
+    grl: null,
     config: null,
     cpercenta: 'Temp',
     cpercentd: 'Temp',
     cpercents: 'Temp',
-    cname: 'Temp',
+    cname: 'Colombia',
     currentUser: null
   }
 
@@ -39,20 +39,21 @@ class Statistics extends Component {
         loading :false
       })
     },3000);
-    axios.get("http://bba9-35-245-240-12.ngrok.io/get_analysis_colombia")
+    axios.get("http://8b71-34-125-121-17.ngrok.io/get_analysis_colombia")
     .then(response => {
       this.setState({
-        all: response.data.percentages,
-        bqa: response.data.percentages[0],
-        bgt: response.data.percentages[1],
-        mdn: response.data.percentages[2],
-        cli: response.data.percentages[3],
-        ctg: response.data.percentages[4],
-        stm: response.data.percentages[5],
+        all: response.data.percentages_cities,
+        bqa: response.data.percentages_cities[0],
+        bgt: response.data.percentages_cities[1],
+        mdn: response.data.percentages_cities[2],
+        cli: response.data.percentages_cities[3],
+        ctg: response.data.percentages_cities[4],
+        stm: response.data.percentages_cities[5],
+        grl : response.data.percentages_general,
+        cpercenta: response.data.percentages_general[1].percentage,
+        cpercentd: response.data.percentages_general[0].percentage,
+        cpercents: response.data.percentages_general[2].percentage
       })
-      
-      const json = response.data;
-      console.log(this.state.all);
       const data = [
         {
           city: 'Barranquilla',
@@ -399,7 +400,15 @@ class Statistics extends Component {
     }else{
       data = data.filter(item => item.city !== "Santa Marta")
     }
+    if(option[6].status){
+      localStorage.setItem('logout', true)
+      this.logout("/");
+    }
     this.setConfig(data);
+  }
+  logout(path){
+    localStorage.setItem('logout', true)
+    this.props.history.push(path);
   }
   render(){
     return(
@@ -457,4 +466,4 @@ class Statistics extends Component {
       </>
     );
   }
-}export default Statistics;
+}export default withRouter(Statistics);

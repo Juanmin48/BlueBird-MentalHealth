@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react'
+import React from 'react'
 import LandingPage from "./Components/Pages/LandingPage/LandingPage";
 import Statistics from "./Components/Pages/Statistics/Statistics";
 import PersonalAnalysis from "./Components/Pages/PersonalAnalysis/PersonalAnalysis";

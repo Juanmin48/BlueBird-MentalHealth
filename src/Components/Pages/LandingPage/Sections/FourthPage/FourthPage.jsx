@@ -1,4 +1,4 @@
-import {React, Component, useState,useEffect} from 'react';
+import {React, Component} from 'react';
 import { Container, Button, Modal } from "react-bootstrap";
 import './FourthPage.css'
 import containerTwo from '../../../../../assets/containerTwo.svg';
@@ -7,8 +7,6 @@ import { withRouter } from 'react-router-dom';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import firebase from 'firebase';
 import 'firebase/auth';
-
-import Statistics from "../../../../Pages/Statistics/Statistics";
 
  if (!firebase.apps.length) {
   firebase.initializeApp({
@@ -23,7 +21,7 @@ import Statistics from "../../../../Pages/Statistics/Statistics";
 class FourthPage extends Component {
   state = {
     show: false,
-    isSignedIn: true,
+    isSignedIn: false,
     uiConfig: {
       signInFlow: 'popup',
       signInOptions:[
@@ -31,20 +29,29 @@ class FourthPage extends Component {
       ],
       signInSuccessUrl: '/statistics',
     },
-    currentUser:null
+    currentUser:null,
+    logout: false
   }
   
   componentDidMount(){
-    // firebase.auth().onAuthStateChanged(user =>{
-    //   this.setState({
-    //     isSignedIn: !!user
-    //     currentUser: user
-    //   });
-    //  localStorage.setItem('user', JSON.stringify(this.state.currentUser))
-    // })
+    if(localStorage.getItem('logout')){
+      firebase.auth().signOut();
+      
+    }
+    //console.log(this.state.logout)
+    
+    firebase.auth().onAuthStateChanged(user =>{
+      
+      this.setState({
+        isSignedIn: !!user,
+        currentUser: user,
+        logout: false
+      });
+     localStorage.setItem('user', JSON.stringify(this.state.currentUser))
+    })
+    
   }
   handleShow(path){
-    console.log(this.state.isSignedIn);
     if(this.state.isSignedIn){
       this.props.history.push(path);
     }else{

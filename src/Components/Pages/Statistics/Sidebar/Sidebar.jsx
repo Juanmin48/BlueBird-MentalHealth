@@ -2,43 +2,48 @@ import {React,useState} from 'react';
 import Icon from "awesome-react-icons";
 import {Link} from 'react-router-dom';
 import { ProSidebar, SidebarHeader, SidebarContent, Menu, MenuItem} from 'react-pro-sidebar';
-// import 'react-pro-sidebar/dist/css/styles.css';
 import './Sidebar.scss';
 
 const Sidebar = ({getChange}) => {
+    const [user] = useState(JSON.parse(localStorage.getItem('user')));
     const [checkedbqa, setCheckedbqa] = useState(true);
     const [checkedbgt, setCheckedbgt] = useState(true);
     const [checkedcli, setCheckedcli] = useState(true);
     const [checkedctg, setCheckedctg] = useState(true);
     const [checkedmdn, setCheckedmdn] = useState(true);
     const [checkedstm, setCheckedstm] = useState(true);
+    const [logout, setLogout] = useState(false);
 
     const handleChangeBQA = () => {
         setCheckedbqa(!checkedbqa);
         getChange([
             {
-            "city": "Barranquilla",
+            "option": "Barranquilla",
             "status":!checkedbqa
             },
             {
-            "city": "Bogotá",
+            "option": "Bogotá",
             "status":checkedbgt
             },
             {
-            "city": "Cali",
+            "option": "Cali",
             "status":checkedcli
             },
             {
-            "city": "Cartagena",
+            "option": "Cartagena",
             "status":checkedctg
             },
             {
-            "city": "Medellín",
+            "option": "Medellín",
             "status":checkedmdn
             },
             {
-            "city": "Santa Marta",
+            "option": "Santa Marta",
             "status":checkedstm
+            },
+            {
+            "option": "logout",
+            "status":logout
             }
         ])
       };
@@ -46,28 +51,32 @@ const Sidebar = ({getChange}) => {
         setCheckedbgt(!checkedbgt);
         getChange([
             {
-                "city": "Barranquilla",
+                "option": "Barranquilla",
                 "status":checkedbqa
                 },
                 {
-                "city": "Bogotá",
+                "option": "Bogotá",
                 "status":!checkedbgt
                 },
                 {
-                "city": "Cali",
+                "option": "Cali",
                 "status":checkedcli
                 },
                 {
-                "city": "Cartagena",
+                "option": "Cartagena",
                 "status":checkedctg
                 },
                 {
-                "city": "Medellín",
+                "option": "Medellín",
                 "status":checkedmdn
                 },
                 {
-                "city": "Santa Marta",
+                "option": "Santa Marta",
                 "status":checkedstm
+                },
+                {
+                "option": "logout",
+                "status":logout
                 }
         ])
       };
@@ -75,28 +84,32 @@ const Sidebar = ({getChange}) => {
         setCheckedcli(!checkedcli);
         getChange([
             {
-                "city": "Barranquilla",
+                "option": "Barranquilla",
                 "status":checkedbqa
                 },
                 {
-                "city": "Bogotá",
+                "option": "Bogotá",
                 "status":checkedbgt
                 },
                 {
-                "city": "Cali",
+                "option": "Cali",
                 "status":!checkedcli
                 },
                 {
-                "city": "Cartagena",
+                "option": "Cartagena",
                 "status":checkedctg
                 },
                 {
-                "city": "Medellín",
+                "option": "Medellín",
                 "status":checkedmdn
                 },
                 {
-                "city": "Santa Marta",
+                "option": "Santa Marta",
                 "status":checkedstm
+                },
+                {
+                "option": "logout",
+                "status":logout
                 }
         ])
       };
@@ -104,28 +117,32 @@ const Sidebar = ({getChange}) => {
         setCheckedctg(!checkedctg);
         getChange([
             {
-            "city": "Barranquilla",
+            "option": "Barranquilla",
             "status":checkedbqa
             },
             {
-            "city": "Bogotá",
+            "option": "Bogotá",
             "status":checkedbgt
             },
             {
-            "city": "Cali",
+            "option": "Cali",
             "status":checkedcli
             },
             {
-            "city": "Cartagena",
+            "option": "Cartagena",
             "status":!checkedctg
             },
             {
-            "city": "Medellín",
+            "option": "Medellín",
             "status":checkedmdn
             },
             {
-            "city": "Santa Marta",
+            "option": "Santa Marta",
             "status":checkedstm
+            },
+            {
+            "option": "logout",
+            "status":logout
             }
         ])
       };
@@ -133,28 +150,32 @@ const Sidebar = ({getChange}) => {
         setCheckedmdn(!checkedmdn);
         getChange([
             {
-                "city": "Barranquilla",
+                "option": "Barranquilla",
                 "status":checkedbqa
                 },
                 {
-                "city": "Bogotá",
+                "option": "Bogotá",
                 "status":checkedbgt
                 },
                 {
-                "city": "Cali",
+                "option": "Cali",
                 "status":checkedcli
                 },
                 {
-                "city": "Cartagena",
+                "option": "Cartagena",
                 "status":checkedctg
                 },
                 {
-                "city": "Medellín",
+                "option": "Medellín",
                 "status":!checkedmdn
                 },
                 {
-                "city": "Santa Marta",
+                "option": "Santa Marta",
                 "status":checkedstm
+                },
+                {
+                "option": "logout",
+                "status":logout
                 }
         ])
       };
@@ -162,28 +183,65 @@ const Sidebar = ({getChange}) => {
         setCheckedstm(!checkedstm);
         getChange([
             {
-                "city": "Barranquilla",
+                "option": "Barranquilla",
                 "status":checkedbqa
                 },
                 {
-                "city": "Bogotá",
+                "option": "Bogotá",
                 "status":checkedbgt
                 },
                 {
-                "city": "Cali",
+                "option": "Cali",
                 "status":checkedcli
                 },
                 {
-                "city": "Cartagena",
+                "option": "Cartagena",
                 "status":checkedctg
                 },
                 {
-                "city": "Medellín",
+                "option": "Medellín",
                 "status":checkedmdn
                 },
                 {
-                "city": "Santa Marta",
+                "option": "Santa Marta",
                 "status":!checkedstm
+                },
+                {
+                "option": "logout",
+                "status":logout
+                }
+        ])
+      };
+      const handleLogOut = () => {
+        setLogout(!logout);
+        getChange([
+            {
+                "option": "Barranquilla",
+                "status":checkedbqa
+                },
+                {
+                "option": "Bogotá",
+                "status":checkedbgt
+                },
+                {
+                "option": "Cali",
+                "status":checkedcli
+                },
+                {
+                "option": "Cartagena",
+                "status":checkedctg
+                },
+                {
+                "option": "Medellín",
+                "status":checkedmdn
+                },
+                {
+                "option": "Santa Marta",
+                "status": checkedstm
+                },
+                {
+                "option": "logout",
+                "status":!logout
                 }
         ])
       };
@@ -250,7 +308,7 @@ const Sidebar = ({getChange}) => {
                     </MenuItem>
                     <div
                     style={{
-                        marginTop: '50px',
+                        marginTop: '5px',
                         marginBottom: '-5px',
                         textAlign: 'center',
                         fontWeight: 'bold',
@@ -258,9 +316,14 @@ const Sidebar = ({getChange}) => {
                         color: '#4CB1DF',
                         }}
                     >
-                    <p>Twitter Account</p>
-                    <div></div>   
-                    <h6 style={{color: 'black'}}>@User</h6>
+                    <div className="row d-flex justify-content-center">
+                        <p style={{width:"60%"}}>Twitter Account</p>
+                        <button type="button" class="btn btn-link shadow-none" style={{width:"10%", marginTop:"-15px"}} onClick={handleLogOut}><Icon name="log-out"/></button>
+                    </div>
+                    <div>
+                        <img src={user.photoURL} alt="ProfilePicture" />
+                    </div>
+                    <h6 className="pt-2" style={{color: 'black'}}>{user.displayName}</h6>
                 </div>
                 </Menu>
             </SidebarContent>
