@@ -212,7 +212,7 @@ class PersonalAnalysis extends Component {
                       </div>
                       <div style={{textAlign:'center', fontSize:'13px'}}>
                           <p>
-                            The present analysis has an accuracy of 70% so it is not totally reliable
+                            The present analysis has an accuracy of 70% approx so it is not totally reliable
                             and it is recommended to look for a specialized diagnosis provided by a 
                             professional specialist in mental health and mental affections. <br/><br/> 
                             The above-mentioned accuracy was calculated based on a series of tests 
