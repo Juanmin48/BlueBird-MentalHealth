@@ -26,8 +26,8 @@ class PersonalAnalysis extends Component {
     user: JSON.parse(localStorage.getItem('user'))
   }
   componentDidMount(){
-          console.log(this.state.user)
-          axios.post("http://8b71-34-125-121-17.ngrok.io/get_analysis", {username : this.state.user.providerData[0].uid})
+      if (localStorage.getItem("isSignedIn") === 'true') {
+        axios.post("http://1d3d-104-199-145-192.ngrok.io/get_analysis", {username : this.state.user.providerData[0].uid})
           .then(response => {
             this.setState({
               percentages: response.data.percentages,
@@ -55,12 +55,12 @@ class PersonalAnalysis extends Component {
             ];
             this.setConfig(dataall);
           })
-        setTimeout(()=>{
-          this.setState({
-            loading :false
-          })
-          
-        },3000);
+          setTimeout(()=>{
+            this.setState({
+              loading :false
+            })
+          },3000);  
+      } 
   }
   setConfig(data) {
     this.setState({

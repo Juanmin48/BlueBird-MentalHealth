@@ -34,12 +34,17 @@ class Statistics extends Component {
 
   componentDidMount(){
     //JSON.parse(localStorage.getItem('user'))
-    setTimeout(()=>{
+    // setTimeout(()=>{
+    //   this.setState({
+    //     loading :false
+    //   })
+    // },3000);
+    if (localStorage.getItem("isSignedIn") === 'true') {
       this.setState({
-        loading :false
+        loading: false
       })
-    },3000);
-    axios.get("http://8b71-34-125-121-17.ngrok.io/get_analysis_colombia")
+    }
+    axios.get("http://1d3d-104-199-145-192.ngrok.io/get_analysis_colombia")
     .then(response => {
       this.setState({
         all: response.data.percentages_cities,
@@ -412,7 +417,7 @@ class Statistics extends Component {
   }
   render(){
     return(
-      this.state.loading
+      (this.state.loading)
       ? <>
           <Menu hidden={true}/>
             <Loader className="col d-flex justify-content-around"

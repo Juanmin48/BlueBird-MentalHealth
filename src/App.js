@@ -2,7 +2,7 @@ import React from 'react'
 import LandingPage from "./Components/Pages/LandingPage/LandingPage";
 import Statistics from "./Components/Pages/Statistics/Statistics";
 import PersonalAnalysis from "./Components/Pages/PersonalAnalysis/PersonalAnalysis";
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Switch, Router } from 'react-router-dom'
 
 function App() {
 

@@ -34,7 +34,7 @@ class FourthPage extends Component {
   }
   
   componentDidMount(){
-    if(localStorage.getItem('logout')){
+    if(localStorage.getItem('logout') === 'true'){
       firebase.auth().signOut();
       
     }
@@ -48,6 +48,7 @@ class FourthPage extends Component {
         logout: false
       });
      localStorage.setItem('user', JSON.stringify(this.state.currentUser))
+     localStorage.setItem('isSignedIn', this.state.isSignedIn)
     })
     
   }
